@@ -11,7 +11,7 @@ and open the template in the editor.
     </head>
     <body>
         <?php
-            require 'db2.php';
+            require './db/connection.php';
             $result = mysql_query("SHOW COLUMNS FROM fotos");
             if (!$result) {
                 echo 'Could not run query: ' . mysql_error();

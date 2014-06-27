@@ -107,8 +107,7 @@ $('.fancybox').fancybox();
 <div class="row gallery">
 <ul>
 <?php
-require 'conexionsql.php';
-require 'db.php';
+require './db/connection.php';
 $conectarme->conectar();
 $inmueble = $_POST['inmueble'];
 $query="SELECT * FROM fotos WHERE inmueble = '$inmueble' ";

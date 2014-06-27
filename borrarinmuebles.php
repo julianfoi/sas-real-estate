@@ -107,8 +107,8 @@ $('.fancybox').fancybox();
 <div class="row gallery">
 <ul>
 <?php
-require 'conexionsql.php';
-require 'db.php';
+require './db/conexionsql.php';
+
 $conectarme->conectar();
 $query3="SELECT * FROM coinor ";
 $result3=mysql_query($query3) or die(mysql_error());

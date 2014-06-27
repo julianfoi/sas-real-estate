@@ -112,7 +112,7 @@ exit();
 }
 else
 { 
-require 'db2.php';
+require './db/connection.php';
 //make variables available
 $inmueble = $_POST['inmueble'];
 $descripcion = $_POST['descripcion'];

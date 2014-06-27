@@ -107,8 +107,7 @@ $('.fancybox').fancybox();
 <div class="row gallery">
 <ul>
 <?php
-require 'conexionsql.php';
-require 'db.php';
+require './db/conexionsql.php';
 $conectarme->conectar();
 $foto_id = $_POST['inmueble'];
 $query="DELETE FROM coinor WHERE foto_id = $foto_id ";

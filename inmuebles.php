@@ -80,8 +80,8 @@ $('.fancybox').fancybox();
 <div class="slider_container">
 
 <?php
-require 'conexionsql.php';
-require 'db.php';
+require './db/conexionsql.php';
+require './db/db.php';
 $conectarme->conectar();
 $query3="SELECT * FROM coinor ";
 $result3=mysql_query($query3) or die(mysql_error());

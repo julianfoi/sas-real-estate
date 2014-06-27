@@ -101,8 +101,8 @@ $('.fancybox').fancybox();
 <div class="span12">
 
 <?php
-require 'conexionsql.php';
-require 'db.php';
+require './db/conexionsql.php';
+require './db/db.php';
 $conectarme->conectar();
 $inmueble = $_POST['inmueble'];
 $query3="SELECT * FROM coinor WHERE foto_id = '$inmueble' ";

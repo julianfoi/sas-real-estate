@@ -107,8 +107,8 @@ $('.fancybox').fancybox();
 <div class="row gallery">
 <ul>
 <?php
-require 'conexionsql.php';
-require 'db.php';
+require './db/conexionsql.php';
+require './db/db.php';
 $conectarme->conectar();
 $foto_id = $_POST['foto'];
 $query="DELETE FROM fotos WHERE foto_id = $foto_id ";

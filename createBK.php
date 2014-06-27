@@ -29,7 +29,7 @@ and open the template in the editor.
 exit(0);
         -->
         <?php
-        //require 'db2.php';
+      
 //MySQL connection parameters
 $dbhost = '68.178.216.112';
 $dbuser = 'coinor';
