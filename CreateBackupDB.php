@@ -12,6 +12,7 @@
  * @author jortizi
  */
 class CreateBackupDB {
+ //  This is for future use   
 //   backup_tables('localhost','username','password','blog','','');
 
 
