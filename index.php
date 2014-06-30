@@ -1,225 +1,205 @@
-<!doctype html>
-<html>
-<head>
-
-<meta charset="ISO-8859-1">
-<title>Especialistas en Finca Raíz en Bogotá y Mosquera</title>
-<meta name="google-site-verification" content="SbcYdNQvEw2JEjZHN3XJKquCNi_mNvXEJtc1kF404zA" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="keywords" content="Especialistas en Finca Raíz en Bogotá y Mosquera" />
-<meta name="description" content="Especialistas en Finca Raíz en Bogotá y Mosquera">
-<meta name="author" content="COINOR">
-
-<!--[if lt IE 9]>
-<script src="js/html5shiv.js"></script>
-<![endif]-->
-
-<link href="css/grid.css" rel="stylesheet" type="text/css">
-<link href="css/base.css" rel="stylesheet" type="text/css">
-<link href="css/adv.css" rel="stylesheet" type="text/css">
-<link href="css/fwslider.css" rel="stylesheet" type="text/css">
-<link href="css/responsive-carousel.css" rel="stylesheet" type="text/css">
-<link href="css/responsive-carousel.slide.css" rel="stylesheet" type="text/css">
-<link href="css/jquery.fancybox.css" rel="stylesheet" type="text/css">
-
-<!-- Google Fonts -->
-<script src="js/jquery.min.js"></script>
-<script src="js/jquery-ui.min.js"></script>
-<script src="js/css3-mediaqueries.js"></script>
-<script src="js/fwslider.js"></script>
-<script src="js/responsive-carousel.js"></script>
-<script src="js/responsive-carousel.touch.js"></script>
-<script src="js/responsive-carousel.drag.js"></script>
-<script src="js/responsive-carousel.autoplay.js"></script>
-<script src="js/settings-home.js"></script>
-<script src="js/jquery.fancybox.js"></script>
-<script>
-$(document).ready(function() {
-$('.fancybox').fancybox();
-});
-</script>
-
-</head>
-
-<body class="home">
-
-<header>
-
-<div class="nav-bar">
-<div class="nav-inside">
-</div>
-</div>
-
-<div class="wrapper">
-
-<!-- ******** LOGO START ******** -->
-<div class="logo">
-<img src="images/logo.png" />
-
-
-
-</div>
-<!-- ******** LOGO END ******** -->
-
-<!-- ******** NAVIGATION START ******** -->
-<nav class="main">
-<ul>
-<li class="active"><a href="index.php">Inicio</a></li>
-<li><a href="nosotros.html">Nosotros</a></li>
-<li><a href="inmuebles.php">Inmuebles</a></li>
-<li><a href="contacto.html">Contacto</a></li>
-</ul>
-</nav>
-
-<button class="nav-trigger">Menú</button>
-
-<!-- ******** NAVIGATION END ******** -->
-
-</div>
-
-<!-- ******** FULL WIDTH SLIDER START ******** -->
-<div id="fwslider">
-<div class="slider_container">
-
-<div class='slide'> 
-<img src='nosotros/Diapositiva1.JPG' />
-<div class='slide_content'>
-<div class='slide_content_wrap'>
-<h4 class='title'>COMPAÑÍA INMOBILIARIA</h4>
-
-</div>
-</div>
-</div>
-
-
-<?php
-require './db/conexionsql.php';
-require './db/db.php';
-$conectarme->conectar();
-$query3="SELECT * FROM coinor ";
-$result3=mysql_query($query3) or die(mysql_error());
-while ($opciones3=  mysql_fetch_array($result3))
-{
-$foto3 = $opciones3['foto_id'];
-echo "
-<div class='slide'> 
-<img src='fotos/".$foto3.".jpg' />
-<div class='slide_content'>
-<div class='slide_content_wrap'>
-<h4 class='title'>".$opciones3['tipo']." en ".$opciones3['lugar']."</h4>
-<a class='readmore' href='inmuebles.php'>
-<form action='inmueble.php' method='POST'>
-<input type='hidden' name='inmueble' value='".$opciones3['foto_id']."'>
-<input type='submit' value='Detalles'></form></a>
-</div>
-</div>
-</div>
-";
-}
-?>    
-
-
-</div>
-<div class="timers"></div>
-<div class="slidePrev"><span></span></div>
-<div class="slideNext"><span></span></div>
-</div> 
-<!-- ******** FULL WIDTH SLIDER END ******** -->
-
-</header>
-
-<!-- ******** REVIEWS START ******** -->
-
-<!-- ******** REVIEWS END ******** -->
-
-<article class="wrapper">
-
-<!-- ******** HIGHLIGHT START ******** -->
-
-
-<div class="row">
-<div class="span12">
-<hr>
-</div>
-</div>
-
-<!-- ******** BLOG START ******** -->
-<div class="span12">
-<h1>Especialistas en Finca Raíz en Bogotá y Mosquera. Nuestros Inmuebles en Bogotá:</h1>
-</div>
-<div class="row">
-<div class="span12">
-<h2 class="center">En Arriendo</h2>
-</div>
-</div>
-
-<div class="row gallery">
-<ul>
 <?php
 
-$query="SELECT * FROM coinor WHERE inmueble = '1' ";
-$result=mysql_query($query) or die(mysql_error());
-while ($opciones=  mysql_fetch_array($result))
+/*
+ *---------------------------------------------------------------
+ * APPLICATION ENVIRONMENT
+ *---------------------------------------------------------------
+ *
+ * You can load different configurations depending on your
+ * current environment. Setting the environment also influences
+ * things like logging and error reporting.
+ *
+ * This can be set to anything, but default usage is:
+ *
+ *     development
+ *     testing
+ *     production
+ *
+ * NOTE: If you change these, also change the error_reporting() code below
+ *
+ */
+	define('ENVIRONMENT', 'development');
+/*
+ *---------------------------------------------------------------
+ * ERROR REPORTING
+ *---------------------------------------------------------------
+ *
+ * Different environments will require different levels of error reporting.
+ * By default development will show errors but testing and live will hide them.
+ */
+
+if (defined('ENVIRONMENT'))
 {
-$foto = $opciones['foto_id'];
-echo "<li class='span3'>
-<a href='fotos/".$foto.".jpg' class='fancybox' rel='gallery' title='COINOR: Especialistas en Finca Raíz en Bogotá'>
-<img src='fotos/".$foto.".jpg' alt='Gallery' class='round' />
-<img style='margin-bottom: 2%;' src='images/shadow3.png'>
-</a>".$opciones['tipo']." en ".$opciones['lugar']."</br>
-<form action='inmueble.php' method='POST'>
-<input type='hidden' name='inmueble' value='".$opciones['foto_id']."'>
-<input type='submit' value='Detalles'></form></li>
-";
+	switch (ENVIRONMENT)
+	{
+		case 'development':
+			error_reporting(E_ALL);
+		break;
+	
+		case 'testing':
+		case 'production':
+			error_reporting(0);
+		break;
+
+		default:
+			exit('The application environment is not set correctly.');
+	}
 }
 
-?>
-</ul>
-</div>
+/*
+ *---------------------------------------------------------------
+ * SYSTEM FOLDER NAME
+ *---------------------------------------------------------------
+ *
+ * This variable must contain the name of your "system" folder.
+ * Include the path if the folder is not in the same  directory
+ * as this file.
+ *
+ */
+	$system_path = 'system';
 
-<div class="row">
-<div class="span12">
-<h2 class="center">En Venta</h2>
-</div>
-</div>
+/*
+ *---------------------------------------------------------------
+ * APPLICATION FOLDER NAME
+ *---------------------------------------------------------------
+ *
+ * If you want this front controller to use a different "application"
+ * folder then the default one you can set its name here. The folder
+ * can also be renamed or relocated anywhere on your server.  If
+ * you do, use a full server path. For more info please see the user guide:
+ * http://codeigniter.com/user_guide/general/managing_apps.html
+ *
+ * NO TRAILING SLASH!
+ *
+ */
+	$application_folder = 'application';
 
-<div class="row gallery">
-<ul>
-<?php
+/*
+ * --------------------------------------------------------------------
+ * DEFAULT CONTROLLER
+ * --------------------------------------------------------------------
+ *
+ * Normally you will set your default controller in the routes.php file.
+ * You can, however, force a custom routing by hard-coding a
+ * specific controller class/function here.  For most applications, you
+ * WILL NOT set your routing here, but it's an option for those
+ * special instances where you might want to override the standard
+ * routing in a specific front controller that shares a common CI installation.
+ *
+ * IMPORTANT:  If you set the routing here, NO OTHER controller will be
+ * callable. In essence, this preference limits your application to ONE
+ * specific controller.  Leave the function name blank if you need
+ * to call functions dynamically via the URI.
+ *
+ * Un-comment the $routing array below to use this feature
+ *
+ */
+	// The directory name, relative to the "controllers" folder.  Leave blank
+	// if your controller is not in a sub-folder within the "controllers" folder
+	// $routing['directory'] = '';
 
-$query2="SELECT * FROM coinor WHERE inmueble = '2' ";
-$result2=mysql_query($query2) or die(mysql_error());
-while ($opciones2=  mysql_fetch_array($result2))
-{
-$foto = $opciones2['foto_id'];
-echo "<li class='span3'><a href='fotos/".$foto.".jpg' class='fancybox' rel='gallery' title='COINOR: Especialistas en Finca Raíz en Bogotá'><img src='fotos/".$foto.".jpg' alt='Gallery' class='round' /><img style='margin-bottom: 2%;' src='images/shadow3.png'></a>".$opciones2['tipo']." en ".$opciones2['lugar']."</br>
-<form action='inmueble.php' method='POST'><input type='hidden' name='inmueble' value='".$opciones2['foto_id']."'><input type='submit' value='Detalles'></form></li>
-";
+	// The controller class file name.  Example:  Mycontroller
+	// $routing['controller'] = '';
 
-}
-$conectarme->cerrarconexion();
-?>
-</ul>
-</div>	
+	// The controller function you wish to be called.
+	// $routing['function']	= '';
 
 
-</article>
+/*
+ * -------------------------------------------------------------------
+ *  CUSTOM CONFIG VALUES
+ * -------------------------------------------------------------------
+ *
+ * The $assign_to_config array below will be passed dynamically to the
+ * config class when initialized. This allows you to set custom config
+ * items or override any default config values found in the config.php file.
+ * This can be handy as it permits you to share one application between
+ * multiple front controller files, with each file containing different
+ * config values.
+ *
+ * Un-comment the $assign_to_config array below to use this feature
+ *
+ */
+	// $assign_to_config['name_of_config_item'] = 'value of config item';
 
-<footer>
-<section class="credits">
 
-<div class="row wrapper">
 
-<div class="span12 center">
-&copy; 2013 COINOR SAS&nbsp;&nbsp;&nbsp;<a href="contacto.html" target="_blank"><b>Contáctenos</b></a>
-</div>
+// --------------------------------------------------------------------
+// END OF USER CONFIGURABLE SETTINGS.  DO NOT EDIT BELOW THIS LINE
+// --------------------------------------------------------------------
 
-</div>
+/*
+ * ---------------------------------------------------------------
+ *  Resolve the system path for increased reliability
+ * ---------------------------------------------------------------
+ */
 
-</section>	
-</footer>
-<!--
-     This is PreProd
--->
-</body>
-</html>
+	// Set the current directory correctly for CLI requests
+	if (defined('STDIN'))
+	{
+		chdir(dirname(__FILE__));
+	}
+
+	if (realpath($system_path) !== FALSE)
+	{
+		$system_path = realpath($system_path).'/';
+	}
+
+	// ensure there's a trailing slash
+	$system_path = rtrim($system_path, '/').'/';
+
+	// Is the system path correct?
+	if ( ! is_dir($system_path))
+	{
+		exit("Your system folder path does not appear to be set correctly. Please open the following file and correct this: ".pathinfo(__FILE__, PATHINFO_BASENAME));
+	}
+
+/*
+ * -------------------------------------------------------------------
+ *  Now that we know the path, set the main path constants
+ * -------------------------------------------------------------------
+ */
+	// The name of THIS file
+	define('SELF', pathinfo(__FILE__, PATHINFO_BASENAME));
+
+	// The PHP file extension
+	// this global constant is deprecated.
+	define('EXT', '.php');
+
+	// Path to the system folder
+	define('BASEPATH', str_replace("\\", "/", $system_path));
+
+	// Path to the front controller (this file)
+	define('FCPATH', str_replace(SELF, '', __FILE__));
+
+	// Name of the "system folder"
+	define('SYSDIR', trim(strrchr(trim(BASEPATH, '/'), '/'), '/'));
+
+
+	// The path to the "application" folder
+	if (is_dir($application_folder))
+	{
+		define('APPPATH', $application_folder.'/');
+	}
+	else
+	{
+		if ( ! is_dir(BASEPATH.$application_folder.'/'))
+		{
+			exit("Your application folder path does not appear to be set correctly. Please open the following file and correct this: ".SELF);
+		}
+
+		define('APPPATH', BASEPATH.$application_folder.'/');
+	}
+
+/*
+ * --------------------------------------------------------------------
+ * LOAD THE BOOTSTRAP FILE
+ * --------------------------------------------------------------------
+ *
+ * And away we go...
+ *
+ */
+require_once BASEPATH.'core/CodeIgniter.php';
+
+/* End of file index.php */
+/* Location: ./index.php */
